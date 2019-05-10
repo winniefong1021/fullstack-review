@@ -19,11 +19,11 @@ class App extends React.Component {
 
   search(term) {
     console.log(`${term} was searched`);
-    axios.post('/repos', term)
-      .then(function (response) {
-        console.log('post response: ', response);
+    axios.post('/repos', { username: term })
+      .then(response => {
+        console.log(response);
       })
-      .catch(function (error) {
+      .catch(error => {
         console.log(error);
       });
   }
