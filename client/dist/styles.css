@@ -1,3 +1,35 @@
-#repo-list {
-  margin-top: 20px;
+#repo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border: 1px solid gray;
+  height: 125px;
+  width: 400px;
+  padding-left: 15px;
+  border-radius: 10px;
+}
+
+ol, ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #03a9f4;
+}
+
+a:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+#username {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+img {
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
 }

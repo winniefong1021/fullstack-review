@@ -11,6 +11,7 @@ app.use(bodyParser.json())
 
 app.post('/repos', function (req, res) {
   // check if db has user before and if user is in there, delete all their repos from db before fetching new repos (update)
+  // refactor db index.js file as well
   getReposByUsername(req.body.username, (err, data) => {
     if (err) {
       res.status(500).send('Unable to find github user');
