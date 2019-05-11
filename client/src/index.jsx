@@ -15,6 +15,7 @@ class App extends React.Component {
     };
 
     this.search = this.search.bind(this);
+    this.getRepos = this.getRepos.bind(this);
   }
 
   search(term) {
@@ -26,6 +27,21 @@ class App extends React.Component {
       .catch(error => {
         console.log(error);
       });
+  }
+
+  getRepos() {
+    axios.get('/repos')
+      .then(res => {
+        this.setState({ repos: res.data });
+        console.log(this.state.repos);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  componentDidMount() {
+    this.getRepos();
   }
 
   render() {

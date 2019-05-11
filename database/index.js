@@ -24,4 +24,20 @@ let save = (data) => {
   });
 }
 
+let find = (cb) => {
+  Repo
+    .find()
+    .where('forks').gt(0)
+    .limit(25)
+    .sort('-forks')
+    .exec((err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        cb(null, data);
+      }
+    });
+}
+
 module.exports.save = save;
+module.exports.find = find;

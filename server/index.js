@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const { getReposByUsername } = require('../helpers/github.js');
-const { save } = require('../database/index.js');
+const { save, find } = require('../database/index.js');
 
 let app = express();
 
@@ -10,6 +10,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json())
 
 app.post('/repos', function (req, res) {
+  // check if db has user before and if user is in there, delete all their repos from db before fetching new repos (update)
   getReposByUsername(req.body.username, (err, data) => {
     if (err) {
       res.status(500).send('Unable to find github user');
@@ -37,8 +38,13 @@ app.post('/repos', function (req, res) {
 });
 
 app.get('/repos', function (req, res) {
-  // TODO - your code here!
-  // This route should send back the top 25 repos
+  find((err, data) => {
+    if (err) {
+      res.status(404).send('Not able to retrieve repos from db');
+    } else {
+      res.status(200).send(data);
+    }
+  });
 });
 
 let port = 1128;
