@@ -33,7 +33,6 @@ class App extends React.Component {
     axios.get('/repos')
       .then(res => {
         this.setState({ repos: res.data });
-        console.log(this.state.repos);
       })
       .catch(err => {
         console.log(err);
