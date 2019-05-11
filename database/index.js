@@ -13,14 +13,6 @@ let repoSchema = mongoose.Schema({
   avatar: String,
 });
 
-// seed db with test data if empty:
-// gordonmzhu
-// tongueroo
-// sayrer
-// valentinogagliardi
-// docsifyjs
-// techqueria
-
 let Repo = mongoose.model('Repo', repoSchema);
 
 let save = (data) => {
