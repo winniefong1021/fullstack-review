@@ -48,5 +48,30 @@ let find = (cb) => {
     });
 }
 
+let findUser = (username, cb) => {
+  Repo
+    .find()
+    .where('username').equals(username)
+    .exec((err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        cb(null, data);
+      }
+    });
+}
+
+let deleteUser = (username) => {
+  Repo.deleteMany({ username: username }, (err) => {
+    if (err) {
+      console.log('not able to delete from db');
+    } else {
+      console.log(`deleted ${username} from db`);
+    }
+  });
+}
+
 module.exports.save = save;
 module.exports.find = find;
+module.exports.findUser = findUser;
+module.exports.deleteUser = deleteUser;
