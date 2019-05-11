@@ -5,7 +5,9 @@ const RepoList = (props) => {
     return (
       <tr key={repo.repoID} >
         <td>{repo.username}</td>
-        <td>{repo.repoName}</td>
+        <td>
+          <a href={repo.url} target="_blank">{repo.repoName}</a>
+        </td>
         <td>{repo.forks}</td>
       </tr>
     );
