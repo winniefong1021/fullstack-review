@@ -17,7 +17,7 @@ const RepoList = (props) => {
     <div>
       <h4> Repo List Component </h4>
       There are {props.repos.length} repos.
-      <table>
+      <table id="repo-list">
         <thead>
           <tr>
             <th>Username</th>

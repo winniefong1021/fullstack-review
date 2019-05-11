@@ -27,6 +27,7 @@ app.post('/repos', function (req, res) {
           forks: userRepos[i].forks,
           stars: userRepos[i].stargazers_count,
           watch: userRepos[i].watchers,
+          avatar: userRepos[i].owner.avatar_url,
         };
 
         save(repo);

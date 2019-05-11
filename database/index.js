@@ -9,8 +9,14 @@ let repoSchema = mongoose.Schema({
   url: String,
   forks: Number,
   stars: Number,
-  watch: Number
+  watch: Number,
+  avatar: String,
 });
+
+// seed db with test data:
+// gordonmzhu
+// tongueroo
+// sayrer
 
 let Repo = mongoose.model('Repo', repoSchema);
 
