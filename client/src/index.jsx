@@ -22,6 +22,7 @@ class App extends React.Component {
     console.log(`${term} was searched`);
     axios.post('/repos', { username: term })
       .then(response => {
+        this.getRepos();
         console.log(response);
       })
       .catch(error => {
@@ -47,7 +48,7 @@ class App extends React.Component {
     return (<div>
       <h1>Github Fetcher</h1>
       <RepoList repos={this.state.repos} />
-      <Search onSearch={this.search} getRepos={this.getRepos} />
+      <Search onSearch={this.search} />
     </div>)
   }
 }
