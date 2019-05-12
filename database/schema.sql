@@ -5,10 +5,9 @@ CREATE DATABASE fetcher;
 USE fetcher;
 
 CREATE TABLE users (
-  id INT NOT NULL AUTO_INCREMENT,
   userID INT NOT NULL,
   username VARCHAR(20) NOT NULL,
-  PRIMARY KEY(id)
+  PRIMARY KEY(userID)
 );
 
 CREATE TABLE repos (
@@ -21,6 +20,6 @@ CREATE TABLE repos (
   stars INT NOT NULL,
   watch INT NOT NULL,
   avatar VARCHAR(300) NOT NULL,
-  FOREIGN KEY(users_id) REFERENCES users(id),
+  FOREIGN KEY(users_id) REFERENCES users(userID),
   PRIMARY KEY(id)
 );
