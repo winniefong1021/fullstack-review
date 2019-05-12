@@ -16,7 +16,7 @@ dbConnection.connect((err) => {
 });
 
 let save = (data) => {
-  dbConnection.query(`INSERT IGNORE INTO users (userID, username) VALUES (${data.users_id}, '${data.username}')`, (err, results) => {
+  dbConnection.query(`INSERT IGNORE INTO users (userID, username) VALUES (${data.users_id}, '${data.username}')`, (err) => {
     if (err) {
       console.log(err);
     }
@@ -24,13 +24,12 @@ let save = (data) => {
     let options = data;
     delete options.username;
 
-    dbConnection.query('INSERT INTO repos SET ?', options, (err, results) => {
+    dbConnection.query('INSERT INTO repos SET ?', options, (err) => {
       if (err) {
         console.log(err);
       }
-      console.log('repos saved');
+      console.log('repos saved to db');
     });
-    console.log('saved to db');
   });
 }
 
@@ -43,9 +42,15 @@ let findUser = (username, cb) => {
 }
 
 let deleteUser = (username) => {
-
+  dbConnection.query(`DELETE repos FROM repos LEFT JOIN users ON repos.users_id = users.userID WHERE users.username = '${username}'`, (err) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log('deleted user\'s repos');
+  });
 }
 
 module.exports = {
   save: save,
+  deleteUser: deleteUser,
 };
