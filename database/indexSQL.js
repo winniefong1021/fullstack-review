@@ -33,12 +33,14 @@ let save = (data) => {
   });
 }
 
-let find = (data) => {
-
-}
-
-let findUser = (username, cb) => {
-
+let find = (cb) => {
+  dbConnection.query('SELECT * FROM repos INNER JOIN users ON repos.users_id = users.userID WHERE forks > 0 ORDER BY forks DESC LIMIT 25', (err, data) => {
+    if (err) {
+      cb(err);
+    } else {
+      cb(null, data);
+    }
+  });
 }
 
 let deleteUser = (username) => {
@@ -53,4 +55,5 @@ let deleteUser = (username) => {
 module.exports = {
   save: save,
   deleteUser: deleteUser,
+  find, find
 };
