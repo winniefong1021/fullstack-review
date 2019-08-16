@@ -6,7 +6,7 @@ const dbConnection = mysql.createConnection({
   password: 'password',
   database: 'fetcher'
 });
- 
+
 dbConnection.connect((err) => {
   if (err) {
     console.log('unable to connect to db');

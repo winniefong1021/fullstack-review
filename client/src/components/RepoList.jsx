@@ -11,8 +11,8 @@ const RepoList = (props) => {
             <a href={repo.url} target="_blank">{repo.repoName}
             </a>
           </li>
-          <li>forks: {repo.forks}</li>  
-          <li>stars: {repo.stars}</li>     
+          <li>forks: {repo.forks}</li>
+          <li>stars: {repo.stars}</li>
           <li>watch: {repo.watch}</li>
         </ul>
       </div>

@@ -20,7 +20,7 @@ app.post('/repos', function (req, res) {
           res.status(500).send('Unable to find github user');
         } else {
           let userRepos = JSON.parse(data.body);
-    
+
           for (let i = 0; i < userRepos.length; i++) {
             let repo = {
               repoID: userRepos[i].id,
@@ -33,10 +33,9 @@ app.post('/repos', function (req, res) {
               watch: userRepos[i].watchers,
               avatar: userRepos[i].owner.avatar_url,
             };
-    
             save(repo);
           }
-    
+
           res.status(201).send('Successfully saved user\'s repos');
         }
       });
